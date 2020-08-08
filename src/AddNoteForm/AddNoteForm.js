@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
 import ApiContext from '../ApiContext.js'
+import './AddNoteForm.css'
 
 export default class AddNote extends Component {
   static contextType = ApiContext;
 
-  const newNote = {
-    'name': event.target.title.value,
-    'modified': new Date(),
-    'folderId': event.target.selectFolder.value,
-    'content': event.target.content.value
-  }
+
 
   addNoteToApi(id) {
     fetch(`http://localhost:9090/notes/${id}`, {method: 'POST'}).then(
