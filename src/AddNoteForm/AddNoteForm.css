@@ -1,4 +1,41 @@
+h2 {
+  color: white;
+  text-align: center;
+}
 label {
   color: white;
   margin-right: 10px;
+}
+
+.noteDiv{
+  width: 25%;
+}
+
+form {
+  /* width: 25%; */
+  margin-top: 10px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.addNoteButtons {
+  justify-content: space-evenly;
+}
+
+p {
+  color: white;
+  display: block !important;
+  margin-top: 1px;
+  font-size: 12px;
+}
+
+.error {
+  text-align: right;
+  padding: 0px;
 }
