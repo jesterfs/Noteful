@@ -4,7 +4,7 @@ import NoteError from "../NoteError";
 import './AddFolderForm.css'
 import FolderError from '../FolderError.js';
 
-export default class AddNote extends Component {
+export default class AddFolder extends Component {
   state= {
     titleError: null,
   }
@@ -27,7 +27,9 @@ export default class AddNote extends Component {
         this.context.addFolder({...folder, id})
         this.props.history.push(`/folder/${id}`)
     }
-    );
+    ).catch(error => alert('Something went wrong. Please check your connection and try again.')) 
+      
+    
   }
 
   formSubmitted = e => { 
@@ -75,7 +77,9 @@ export default class AddNote extends Component {
                     name="folderTitle" 
                     id="folderTitle" 
                     onChange={this.validateTitle} 
-                    onBlur={this.validateTitle}/>
+                    onBlur={this.validateTitle}
+                    required
+                    />
                   </div>
 
                   <div className='error'>
@@ -98,3 +102,4 @@ export default class AddNote extends Component {
     )
   }
 }
+

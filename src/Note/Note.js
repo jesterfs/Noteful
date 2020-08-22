@@ -68,14 +68,16 @@ export default class Note extends React.Component {
       </div>
     )
   }
-  propTypes = {
-    notes: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      modified: PropTypes.string.isRequired,
-      folderId: PropTypes.string.isRequired,
-      content: PropTypes.string.isRequired
-    }),
-    deleteNote: PropTypes.func.isRequired
-  }
+  
+}
+
+Note.propTypes = {
+  notes: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    modified: PropTypes.string.isRequired,
+    folderId: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired
+  }),
+  deleteNote: PropTypes.func
 }

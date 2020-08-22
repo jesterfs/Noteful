@@ -25,7 +25,7 @@ export default class AddNote extends Component {
         this.context.addNote({...note, id})
         this.props.history.push(`/note/${id}`)
     }
-    );
+    ).catch(error => alert('Something went wrong. Please check your connection and try again.'))
   }
 
   formCanceled = e => {
@@ -102,7 +102,7 @@ export default class AddNote extends Component {
             <div className="form-group">
               <label htmlFor="noteTitle">Note Title</label>
               <input type="text" className="noteTitle"
-                name="noteTitle" id="noteTitle" onChange={this.validateTitle} onBlur={this.validateTitle}/>
+                name="noteTitle" id="noteTitle" onChange={this.validateTitle} onBlur={this.validateTitle} required/>
                 
             </div>
             <div className='error'>
@@ -125,7 +125,7 @@ export default class AddNote extends Component {
             <div className="form-group">
                 <label htmlFor="content">Content</label>
                 <textarea type="text" className="content"
-                name="content" id="content" onChange={this.validateContent} onBlur={this.validateContent}/>
+                name="content" id="content" onChange={this.validateContent} onBlur={this.validateContent} required/>
 
                 
             </div>
@@ -148,3 +148,5 @@ export default class AddNote extends Component {
     )
   }
 }
+
+
