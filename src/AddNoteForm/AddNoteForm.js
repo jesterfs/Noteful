@@ -13,7 +13,7 @@ export default class AddNote extends Component {
 
 
   addNoteToApi(note) {
-    fetch(`http://localhost:9090/notes`, {method: 'POST', body: JSON.stringify(note) }).then(
+    fetch(`http://localhost:8000/api/notes`, {method: 'POST', body: JSON.stringify(note) }).then(
       r => {
         if (r.ok)
           return r.json();
@@ -36,19 +36,21 @@ export default class AddNote extends Component {
   formSubmitted = e => { 
     e.preventDefault()
 
-    console.log(e.currentTarget.noteTitle.value)
+    // console.log(e.currentTarget.noteTitle.value)
     
-    const name = e.currentTarget.noteTitle.value 
-    const content = e.currentTarget.content.value
+    // const name = e.currentTarget.noteTitle.value 
+    // console.log(name)
+    // const content = e.currentTarget.content.value
 
-    if ([this.validateTitleValue(name), this.validateContentValue(content)].filter(Boolean).length) return;
+    // if ([this.validateTitleValue(name), this.validateContentValue(content)].filter(Boolean).length) return;
 
     const note = {
-      name,
-      content, 
-      folderId: this.folderRef.current.value,
+      name: e.currentTarget.noteTitle.value ,
+      content:  e.currentTarget.content.value, 
+      folder_Id: this.folderRef.current.value,
       modified: new Date()
     }
+    
     this.addNoteToApi(note)
   }
    

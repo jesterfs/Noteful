@@ -23,10 +23,15 @@ class App extends Component {
     componentDidMount() {
         // fake date loading from API call
         // setTimeout(() => this.setState(dummyStore), 600);
-        fetch('http://localhost:9090/db' )
+        fetch('http://localhost:8000/api/folders' )
           .then(r => r.json())
-          .then(({ notes, folders}) => this.setState({notes, folders}))
+          .then(rjson=> this.setState({folders: rjson }))
+
+        fetch('http://localhost:8000/api/notes' )
+          .then(r => r.json())
+          .then(rjson => this.setState({notes: rjson }))
     }
+    
 
     handleDeleteNote = noteId => {
         this.setState({
