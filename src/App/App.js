@@ -11,7 +11,7 @@ import ApiContext from '../ApiContext';
 import AddNoteForm from "../AddNoteForm/AddNoteForm";
 import AddFolderForm from "../AddFolderForm/AddFolderForm";
 import NoteError from "../NoteError";
-import config from '../config';
+import API_ENDPOINT from '../config';
 import './App.css';
 
 class App extends Component {
@@ -23,11 +23,11 @@ class App extends Component {
     componentDidMount() {
         // fake date loading from API call
         // setTimeout(() => this.setState(dummyStore), 600);
-        fetch('http://localhost:8000/api/folders' )
+        fetch(`${API_ENDPOINT} + api/folders` )
           .then(r => r.json())
           .then(rjson=> this.setState({folders: rjson }))
 
-        fetch('http://localhost:8000/api/notes' )
+        fetch(`${API_ENDPOINT} + api/notes` )
           .then(r => r.json())
           .then(rjson => this.setState({notes: rjson }))
     }

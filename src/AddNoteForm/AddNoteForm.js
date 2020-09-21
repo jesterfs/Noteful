@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ApiContext from '../ApiContext.js'
 import NoteError from "../NoteError";
+import API_ENDPOINT from "../config"
 import './AddNoteForm.css'
 
 export default class AddNote extends Component {
@@ -13,7 +14,7 @@ export default class AddNote extends Component {
 
 
   addNoteToApi(note) {
-    fetch(`http://localhost:8000/api/notes`, {method: 'POST', body: JSON.stringify(note) }).then(
+    fetch(`${API_ENDPOINT} + api/notes`, {method: 'POST', body: JSON.stringify(note) }).then(
       r => {
         if (r.ok)
           return r.json();

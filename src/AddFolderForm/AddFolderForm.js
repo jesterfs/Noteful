@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ApiContext from '../ApiContext.js'
 import NoteError from "../NoteError";
+import API_ENDPOINT from '../config'
 import './AddFolderForm.css'
 import FolderError from '../FolderError.js';
 
@@ -15,7 +16,7 @@ export default class AddFolder extends Component {
 
 
   addFolderToApi(folder) {
-    fetch(`http://localhost:9090/folders`, {method: 'POST', body: JSON.stringify(folder) }).then(
+    fetch(`${API_ENDPOINT} + api/folders`, {method: 'POST', body: JSON.stringify(folder) }).then(
       r => {
         if (r.ok)
           return r.json();
