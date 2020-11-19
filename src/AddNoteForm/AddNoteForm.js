@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ApiContext from '../ApiContext.js'
 import NoteError from "../NoteError";
-import API_ENDPOINT from "../config"
+import cfg from "../config"
 import './AddNoteForm.css'
 
 export default class AddNote extends Component {
@@ -14,7 +14,14 @@ export default class AddNote extends Component {
 
 
   addNoteToApi(note) {
-    fetch(`${API_ENDPOINT} + api/notes`, {method: 'POST', body: JSON.stringify(note) }).then(
+    fetch(`${cfg.API_ENDPOINT}api/notes`, 
+    {method: 'POST', 
+    body: JSON.stringify(note),
+    headers: {
+      'content-type' : 'application/json'
+    }
+  })
+    .then(
       r => {
         if (r.ok)
           return r.json();
@@ -36,7 +43,7 @@ export default class AddNote extends Component {
 
   formSubmitted = e => { 
     e.preventDefault()
-
+    
     // console.log(e.currentTarget.noteTitle.value)
     
     // const name = e.currentTarget.noteTitle.value 
@@ -48,10 +55,10 @@ export default class AddNote extends Component {
     const note = {
       name: e.currentTarget.noteTitle.value ,
       content:  e.currentTarget.content.value, 
-      folder_Id: this.folderRef.current.value,
+      folder_id: this.folderRef.current.value,
       modified: new Date()
     }
-    
+    console.log(note)
     this.addNoteToApi(note)
   }
    

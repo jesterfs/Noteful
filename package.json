@@ -12,16 +12,17 @@
     "react-dom": "^16.6.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
-    "typeface-roboto": "0.0.54"
+    "typeface-roboto": "0.0.54",
+    "vercel": "^20.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "prebuild": "CI=true react-scripts test --colors",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test -u",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "vercel --prod"
+    "deploy": "npx vercel --prod"
   },
   "eslintConfig": {
     "extends": "react-app"

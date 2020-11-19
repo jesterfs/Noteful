@@ -11,7 +11,7 @@ import ApiContext from '../ApiContext';
 import AddNoteForm from "../AddNoteForm/AddNoteForm";
 import AddFolderForm from "../AddFolderForm/AddFolderForm";
 import NoteError from "../NoteError";
-import API_ENDPOINT from '../config';
+import cfg from '../config';
 import './App.css';
 
 class App extends Component {
@@ -23,19 +23,21 @@ class App extends Component {
     componentDidMount() {
         // fake date loading from API call
         // setTimeout(() => this.setState(dummyStore), 600);
-        fetch(`${API_ENDPOINT} + api/folders` )
+        fetch(`${cfg.API_ENDPOINT}api/folders` )
           .then(r => r.json())
           .then(rjson=> this.setState({folders: rjson }))
 
-        fetch(`${API_ENDPOINT} + api/notes` )
+        fetch(`${cfg.API_ENDPOINT}api/notes` )
           .then(r => r.json())
           .then(rjson => this.setState({notes: rjson }))
     }
     
 
     handleDeleteNote = noteId => {
+        console.log(noteId, this.state.notes)
         this.setState({
             notes: this.state.notes.filter(note => note.id !== noteId)
+            
         });
     };
 

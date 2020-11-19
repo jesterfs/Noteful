@@ -54,12 +54,13 @@ export default class NoteListMain extends React.Component {
 }
 
 NoteListMain.propTypes = {
-  notes: PropTypes.shape({
+  notes: PropTypes.arrayOf( 
+    PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     modified: PropTypes.string.isRequired,
     folderId: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired
-  }),
+  })),
   deleteNote: PropTypes.func
 }
